@@ -1,0 +1,86 @@
+<div class="row">
+
+
+<div class="containeRegistro border">
+  <h2>Registar Venda</h2>
+<form id="formID">
+
+
+  <label for="vendedor_id">ID vendedor</label><br>
+  <input type="number" id="vendedor_id" name="vendedor_id" value=""><br><br>
+
+
+  <label for="cliente_id"> ID cliente</label><br>
+  <input type="number" id="cliente_id" name="cliente_id" value=""><br><br>
+
+  <label for="produto_id">ID produto</label><br>
+  <input type="number" id="produto_id" name="produto_id" value=><br><br>
+
+  <label for="data_pedido">data do pedido</label><br>
+  <input type="date" id="data_pedido" name="data_pedido" value=""><br><br>
+</form>
+<button class="botao" (click)="PostMethod()">Adicionar Registro</button>
+
+<div id="CliProVe"class="row">
+<button class="botao" (click)="AddEcluirCliente()">Cliente</button>
+<button class="botao" (click)="AddEcluirProduto()">Produto</button>
+<button class="botao" (click)="AddEcluirProduto()">vendedor</button>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="container border">
+
+  <h1>Historico de Vendas</h1>
+  <div id="Tabela" class="container2 border">
+    <table mat-table [dataSource]="pedidocompra" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="idpedido" class="th1">
+        <th id="th1" mat-header-cell *matHeaderCellDef> ID Pedido </th>
+        <td mat-cell *matCellDef="let element"> {{ element.idpedido }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomevendedor">
+        <th id="th2" mat-header-cell *matHeaderCellDef class="center"> Vendedor </th>
+        <td mat-cell *matCellDef="let element"> {{ element.nomevendedor }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nomecliente">
+        <th id="th3" mat-header-cell *matHeaderCellDef class="center"> Cliente </th>
+        <td mat-cell *matCellDef="let element"> {{ element.nomecliente }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="descricaoproduto">
+        <th id="th4" mat-header-cell *matHeaderCellDef class="center"> Descrição </th>
+        <td mat-cell *matCellDef="let element"> {{ element.descricaoproduto }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="datapedido">
+        <th id="th5" mat-header-cell *matHeaderCellDef class="center"> Data </th>
+        <td mat-cell *matCellDef="let element"> {{ element.datapedido }} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="excluir">
+        <th id="th2" mat-header-cell *matHeaderCellDef class="center"> opções </th>
+        <td mat-cell *matCellDef="let element">
+          <a routerLink="/editar"><button class="botao">Editar</button></a>
+          <button class="botao" (click)="excluir(element.idpedido)">Excluir</button>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+</div>
+</div>

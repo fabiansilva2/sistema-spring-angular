@@ -1,0 +1,50 @@
+# Crie a tabela vendedor com seus atributos.
+Create table vendedor(
+id_vendedor int auto_increment primary key,
+nome_vendedor varchar(60) not null,
+email_vendedor varchar(60) not null,
+telefone_vendedor varchar(60) not null
+);
+
+# Crie a tabela cliente com seus atributos.
+Create table cliente(
+id_cliente int auto_increment primary key,
+nome_cliente varchar(60) not null,
+email_cliente varchar(60) not null,
+telefone_cliente varchar(60) not null
+);
+
+# Crie a tabela produto com seus atributos.
+Create table produto(
+id_produto int auto_increment primary key,
+descricao_produto varchar(60) not null,
+preco_produto varchar(60) not null,
+codigo_produto int not null
+);
+
+# Crie a tabela pedido_compra com seus atributos e realize o relacionamento que ela possui com as tabelas (produto, vendedor e cliente).
+
+Create table pedido_compra(
+id_pedido int auto_increment primary key,
+produto_id int not null,
+cliente_id int not null,
+vendedor_id int not null,
+data_pedido date not null,
+FOREIGN KEY(produto_id) REFERENCES produto(id_produto),
+FOREIGN KEY(cliente_id) REFERENCES cliente(id_cliente),
+FOREIGN KEY(vendedor_id) REFERENCES vendedor(id_vendedor)
+);
+
+
+# Inserir 10 registros na tabela vendedor
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('João da Silva', 'joao.silva@vendas.com.br', '(11) 98765-4321');
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('Maria Souza', 'maria.souza@vendas.com.br', '(21) 87654-3210');
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('Pedro Oliveira', 'pedro.oliveira@vendas.com.br', '(31) 76543-2109');
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('Ana Santos', 'ana.santos@vendas.com.br', '(41) 65432-1098');
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('Carlos Lima', 'carlos.lima@vendas.com.br', '(51) 54321-0987');
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('Laura Costa', 'laura.costa@vendas.com.br', '(61) 43210-9876');
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('Felipe Rodrigues', 'felipe.rodrigues@vendas.com.br', '(71) 32109-8765');
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('Amanda Pereira', 'amanda.pereira@vendas.com.br', '(81) 21098-7654');
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('Gustavo Almeida', 'gustavo.almeida@vendas.com.br', '(91) 10987-6543');
+insert into vendedor (nome_vendedor, email_vendedor, telefone_vendedor)value ('Bruna Martins', 'bruna.martins@vendas.com.br', '(01) 09876-5432');
+select * from vendedor;
